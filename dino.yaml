@@ -60,8 +60,6 @@ paths:
                 $ref: "/schema/shared/user.yaml"
         400:
           description: unexpected error
-        401:
-          description: unauthorized
         405:
           description: invalid method
   /app/{appAbbreviation}/admin/user:
