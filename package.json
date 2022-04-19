@@ -1,0 +1,14 @@
+{
+  "name": "dino-redoc",
+  "private": true,
+  "scripts": {
+    "start": "http-server -p 3900 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "14.1.0",
+    "yarn": "1.22.18"
+  },
+  "dependencies": {
+    "redoc": "2.0.0-rc.66"
+  }
+}

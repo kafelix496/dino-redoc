@@ -1,0 +1,9 @@
+type: object
+description: user access level
+properties:
+  fa:
+    type: string
+    $ref: "#/components/enums/accessLevel"
+  mt:
+    type: string
+    $ref: "#/components/enums/accessLevel"

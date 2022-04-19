@@ -1,0 +1,30 @@
+type: object
+properties:
+  _id:
+    type: string
+    description: user id
+  name:
+    type: string
+    description: user name
+  email:
+    type: string
+    description: user email
+  emailVerified:
+    type: "null"
+    description: |
+      user email verification status
+
+      currently it always return null
+  image:
+    type: string
+    description: user thumbnail url
+  accessLevel:
+    $ref: "/schema/shared/accessLevel.yaml"
+  createdAt:
+    type: string
+    format: date-time
+    description: user created date
+  updatedAt:
+    type: string
+    format: date-time
+    description: user updated date
