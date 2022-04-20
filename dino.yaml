@@ -193,14 +193,14 @@ components:
     appAbbreviation:
       type: string
       enum:
-      - fa
-      - mt
+        - fa
+        - mt
     accessLevel:
       type: string
       enum:
-      - "0"
-      - "1"
-      - "2"
-      - "5"
-      - "9"
-      - "10"
+        - "0"
+        - "1"
+        - "2"
+        - "5"
+        - "9"
+        - "10"
