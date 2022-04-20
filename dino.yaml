@@ -102,7 +102,7 @@ paths:
       parameters:
         - $ref: "/parameter/shared/appAbbreviation.yaml"
         - name: userId
-          description: target user id
+          description: target user id.
           in: path
           required: true
           schema:
@@ -120,12 +120,182 @@ paths:
           description: unauthorized
         405:
           description: invalid method
+  /app/{appAbbreviation}/project:
+    get:
+      tags:
+        - project
+      summary: get project lists
+      description: get project lists.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "/parameter/shared/appAbbreviation.yaml"
+          schema:
+            type: string
+            enum:
+              - mt
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "/schema/shared/project.yaml"
+        400:
+          description: unexpected error
+        401:
+          description: unauthorized
+        405:
+          description: invalid method
+    post:
+      tags:
+        - project
+      summary: create project
+      description: create project.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "/parameter/shared/appAbbreviation.yaml"
+          schema:
+            type: string
+            enum:
+              - mt
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "/schema/shared/projectInput.yaml"
+              required:
+                - title
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "/schema/shared/project.yaml"
+        400:
+          description: unexpected error
+        401:
+          description: unauthorized
+        405:
+          description: invalid method
+  /app/{appAbbreviation}/project/{projectId}:
+    get:
+      tags:
+        - project
+      summary: get project
+      description: get project information with project id.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "/parameter/shared/appAbbreviation.yaml"
+          schema:
+            type: string
+            enum:
+              - mt
+        - name: projectId
+          description: target project id.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "/schema/shared/project.yaml"
+        400:
+          description: unexpected error
+        401:
+          description: unauthorized
+        405:
+          description: invalid method
+    put:
+      tags:
+        - project
+      summary: update project
+      description: update project title or description.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "/parameter/shared/appAbbreviation.yaml"
+          schema:
+            type: string
+            enum:
+              - mt
+        - name: projectId
+          description: target project id.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "/schema/shared/projectInput.yaml"
+      responses:
+        201:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "/schema/shared/project.yaml"
+        400:
+          description: unexpected error
+        401:
+          description: unauthorized
+        405:
+          description: invalid method
+    delete:
+      tags:
+        - project
+      summary: delete project
+      description: delete project.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - $ref: "/parameter/shared/appAbbreviation.yaml"
+          schema:
+            type: string
+            enum:
+              - mt
+        - name: projectId
+          description: target project id.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: successful operation
+        400:
+          description: unexpected error
+        401:
+          description: unauthorized
+        405:
+          description: invalid method
   /s3/download_url:
     get:
       tags:
         - s3
       summary: get download url
-      description: url expires in 60 seconds
+      description: url expires in 60 seconds.
       consumes:
         - application/json
       produces:
@@ -140,7 +310,7 @@ paths:
                 properties:
                   url:
                     type: string
-                    description: download url
+                    description: download url.
         400:
           description: unexpected error
         401:
@@ -152,7 +322,7 @@ paths:
       tags:
         - s3
       summary: get upload url
-      description: url expires in 60 seconds
+      description: url expires in 60 seconds.
       consumes:
         - application/json
       produces:
@@ -167,17 +337,17 @@ paths:
                 properties:
                   url:
                     type: string
-                    description: upload url
+                    description: upload url.
                   fields:
                     type: object
-                    description: fields of PresignedPost
+                    description: fields of PresignedPost.
                     properties:
                       Policy:
                         type: string
                         description: |
                           A base64-encoded policy detailing what constitutes an acceptable POST upload.
 
-                          Composed of the conditions and expiration provided to s3.createPresignedPost
+                          Composed of the conditions and expiration provided to s3.createPresignedPost.
                       X-Amz-Signature:
                         type: string
                         description: |

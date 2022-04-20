@@ -1,0 +1,23 @@
+allOf:
+  - type: object
+    properties:
+      _id:
+        type: string
+        format: uuid
+        description: project id
+      ownerId:
+        type: string
+        format: uuid
+        description: project owner's id
+      createdAt:
+        type: string
+        format: date-time
+        description: project created date
+      updatedAt:
+        type: string
+        format: date-time
+        description: project updated date
+      accessUsers:
+        type: array
+        description: access users information
+  - $ref: "/schema/shared/projectInput.yaml"
