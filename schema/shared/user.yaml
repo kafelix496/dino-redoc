@@ -12,11 +12,13 @@ properties:
     format: email
     description: user email
   emailVerified:
-    type: "null"
+    type: boolean
+    nullable: true
     description: |
       user email verification status
 
       currently it always return null
+    default: null
   image:
     type: string
     format: uri
