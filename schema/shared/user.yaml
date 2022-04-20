@@ -2,12 +2,14 @@ type: object
 properties:
   _id:
     type: string
+    format: uuid
     description: user id
   name:
     type: string
     description: user name
   email:
     type: string
+    format: email
     description: user email
   emailVerified:
     type: "null"
@@ -17,6 +19,7 @@ properties:
       currently it always return null
   image:
     type: string
+    format: uri
     description: user thumbnail url
   accessLevel:
     $ref: "/schema/shared/accessLevel.yaml"
