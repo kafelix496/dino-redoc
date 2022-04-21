@@ -294,7 +294,7 @@ paths:
     get:
       tags:
         - s3
-      summary: get download url
+      summary: get pre-signed download url
       description: url expires in 60 seconds.
       consumes:
         - application/json
@@ -321,7 +321,7 @@ paths:
     get:
       tags:
         - s3
-      summary: get upload url
+      summary: get pre-signed upload url
       description: url expires in 60 seconds.
       consumes:
         - application/json
