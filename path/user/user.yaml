@@ -1,8 +1,8 @@
 get:
   tags:
     - user
-  summary: get user lists
-  description: get user lists to change user's permission. only admin or super admin user can get the lists.
+  summary: get user list
+  description: get user list to change user's permission. only admin or super admin user can get the lists.
   consumes:
     - application/json
   produces:

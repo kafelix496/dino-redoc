@@ -1,8 +1,8 @@
 get:
   tags:
     - project
-  summary: get project lists
-  description: get project lists.
+  summary: get project list
+  description: get project list.
   consumes:
     - application/json
   produces:
