@@ -1,0 +1,65 @@
+get:
+  tags:
+    - project
+  summary: get project lists
+  description: get project lists.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - $ref: "/parameter/shared/appAbbreviation.yaml"
+      schema:
+        type: string
+        enum:
+          - mt
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "/schema/shared/project.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+post:
+  tags:
+    - project
+  summary: create project
+  description: create project.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - $ref: "/parameter/shared/appAbbreviation.yaml"
+      schema:
+        type: string
+        enum:
+          - mt
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "/schema/shared/projectInput.yaml"
+          required:
+            - title
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/shared/project.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

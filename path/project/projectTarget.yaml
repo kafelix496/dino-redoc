@@ -1,0 +1,103 @@
+get:
+  tags:
+    - project
+  summary: get project
+  description: get project information with project id.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - $ref: "/parameter/shared/appAbbreviation.yaml"
+      schema:
+        type: string
+        enum:
+          - mt
+    - name: projectId
+      description: target project id.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/shared/project.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+put:
+  tags:
+    - project
+  summary: update project
+  description: update project title or description.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - $ref: "/parameter/shared/appAbbreviation.yaml"
+      schema:
+        type: string
+        enum:
+          - mt
+    - name: projectId
+      description: target project id.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "/schema/shared/projectInput.yaml"
+  responses:
+    201:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/shared/project.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+delete:
+  tags:
+    - project
+  summary: delete project
+  description: delete project.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - $ref: "/parameter/shared/appAbbreviation.yaml"
+      schema:
+        type: string
+        enum:
+          - mt
+    - name: projectId
+      description: target project id.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    204:
+      description: successful operation
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

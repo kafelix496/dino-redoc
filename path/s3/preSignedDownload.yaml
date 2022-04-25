@@ -1,0 +1,26 @@
+get:
+  tags:
+    - s3
+  summary: get pre-signed download url
+  description: url expires in 60 seconds.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                description: download url.
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

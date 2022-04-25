@@ -1,0 +1,20 @@
+get:
+  tags:
+    - user
+  summary: get current user
+  description: get current user information.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/shared/user.yaml"
+    400:
+      description: unexpected error
+    405:
+      description: invalid method

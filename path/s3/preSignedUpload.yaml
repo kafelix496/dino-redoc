@@ -1,0 +1,40 @@
+get:
+  tags:
+    - s3
+  summary: get pre-signed upload url
+  description: url expires in 60 seconds.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                description: upload url.
+              fields:
+                type: object
+                description: fields of PresignedPost.
+                properties:
+                  Policy:
+                    type: string
+                    description: |
+                      A base64-encoded policy detailing what constitutes an acceptable POST upload.
+
+                      Composed of the conditions and expiration provided to s3.createPresignedPost.
+                  X-Amz-Signature:
+                    type: string
+                    description: |
+                      A hex-encoded HMAC of the POST policy, signed with the credentials provided to the S3 client.
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
