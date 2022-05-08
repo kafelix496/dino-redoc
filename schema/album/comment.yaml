@@ -1,0 +1,6 @@
+type: object
+properties:
+  content:
+    type: string
+    maxLength: 500
+    description: comment content.

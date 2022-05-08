@@ -1,0 +1,23 @@
+type: object
+properties:
+  total:
+    type: number
+    minimum: 0
+    description: total "like" count.
+  clicked:
+    type: boolean
+    description: status of the user clicked "like" button.
+  users:
+    type: array
+    maxItems: 3
+    description: name/email of users who clicked "like" button.
+    items:
+      type: object
+      properties:
+        name:
+          type: string
+          description: user name.
+        email:
+          type: string
+          format: email
+          description: user email.

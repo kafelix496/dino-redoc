@@ -1,0 +1,61 @@
+put:
+  tags:
+    - album
+  summary: update category
+  description: update category information.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - name: categoryId
+      description: target category id.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: "/schema/album/category.yaml"
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/album/categoryWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+delete:
+  tags:
+    - album
+  summary: delete category
+  description: delete category.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - name: categoryId
+      description: target category id.
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  responses:
+    204:
+      description: successful operation
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

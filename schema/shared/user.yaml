@@ -3,33 +3,33 @@ properties:
   _id:
     type: string
     format: uuid
-    description: user id
+    description: user id.
   name:
     type: string
-    description: user name
+    description: user name.
   email:
     type: string
     format: email
-    description: user email
+    description: user email.
   emailVerified:
     type: boolean
     nullable: true
     description: |
-      user email verification status
+      user email verification status.
 
-      currently it always return null
+      currently it always return null.
     default: null
   image:
     type: string
     format: uri
-    description: user thumbnail url
+    description: user thumbnail url.
   accessLevel:
     $ref: "/schema/shared/accessLevel.yaml"
   createdAt:
     type: string
     format: date-time
-    description: user created date
+    description: user created date.
   updatedAt:
     type: string
     format: date-time
-    description: user updated date
+    description: user updated date.

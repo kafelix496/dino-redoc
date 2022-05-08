@@ -1,18 +1,12 @@
 get:
   tags:
-    - project
-  summary: get project list
-  description: get project list.
+    - album
+  summary: get category list
+  description: get category list.
   consumes:
     - application/json
   produces:
     - application/json
-  parameters:
-    - $ref: "/parameter/shared/appAbbreviation.yaml"
-      schema:
-        type: string
-        enum:
-          - mt
   responses:
     200:
       description: successful operation
@@ -21,7 +15,7 @@ get:
           schema:
             type: array
             items:
-              $ref: "/schema/shared/project.yaml"
+              $ref: "/schema/album/categoryWithId.yaml"
     400:
       description: unexpected error
     401:
@@ -30,33 +24,27 @@ get:
       description: invalid method
 post:
   tags:
-    - project
-  summary: create project
-  description: create project.
+    - album
+  summary: create category
+  description: create category.
   consumes:
     - application/json
   produces:
     - application/json
-  parameters:
-    - $ref: "/parameter/shared/appAbbreviation.yaml"
-      schema:
-        type: string
-        enum:
-          - mt
   requestBody:
     content:
       application/json:
         schema:
-          $ref: "/schema/shared/projectInput.yaml"
           required:
-            - title
+            - name
+          $ref: "/schema/album/category.yaml"
   responses:
     201:
       description: successful operation
       content:
         application/json:
           schema:
-            $ref: "/schema/shared/project.yaml"
+            $ref: "/schema/album/categoryWithId.yaml"
     400:
       description: unexpected error
     401:

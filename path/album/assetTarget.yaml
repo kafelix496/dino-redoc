@@ -1,0 +1,38 @@
+get:
+  tags:
+    - album
+  summary: get asset detail
+  description: get asset information.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - name: assetId
+      description: target asset id.
+      in: path
+      schema:
+        type: string
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "/schema/album/assetWithId.yaml"
+              - type: object
+                properties:
+                  like:
+                    $ref: "/schema/album/like.yaml"
+                  comments:
+                    type: array
+                    maxItems: 25
+                    items:
+                      $ref: "/schema/album/commentWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

@@ -1,0 +1,100 @@
+get:
+  tags:
+    - album
+  summary: get comment list
+  description: get post/asset comment list.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - parent
+            - parentId
+            - page
+          properties:
+            parent:
+              type: string
+              description: target parent who have comments.
+              enum:
+                - "POST"
+                - "ASSET"
+            parentId:
+              type: string
+              format: uuid
+              description: target parent id.
+            page:
+              type: number
+              minimum: 1
+              description: page number. size of the page is 25.
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              total:
+                type: number
+                minimum: 0
+                description: total "comment" count.
+              comments:
+                type: array
+                maxItems: 25
+                items:
+                  $ref: "/schema/album/commentWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+post:
+  tags:
+    - album
+  summary: create comment
+  description: create post/asset comment.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - parent
+            - parentId
+            - content
+          allOf:
+            - type: object
+              properties:
+                parent:
+                  type: string
+                  description: target parent who have comments.
+                  enum:
+                    - "POST"
+                    - "ASSET"
+                parentId:
+                  type: string
+                  format: uuid
+                  description: target parent id.
+            - $ref: "/schema/album/comment.yaml"
+  responses:
+    201:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/album/commentWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

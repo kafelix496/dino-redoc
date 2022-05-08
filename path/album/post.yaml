@@ -1,0 +1,118 @@
+get:
+  tags:
+    - album
+  summary: get post list
+  description: get post list.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - page
+          properties:
+            page:
+              type: number
+              minimum: 1
+              description: page number. size of the page is 25.
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              total:
+                type: number
+                minimum: 0
+                description: total "post" count.
+              posts:
+                type: array
+                maxItems: 25
+                items:
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      format: uuid
+                      description: post id.
+                    categories:
+                      type: array
+                      items:
+                        $ref: "/schema/album/categoryWithId.yaml"
+                    like:
+                      $ref: "/schema/album/like.yaml"
+                    assets:
+                      type: array
+                      items:
+                        $ref: "/schema/album/assetWithId.yaml"
+                    comments:
+                      type: array
+                      maxItems: 25
+                      items:
+                        $ref: "/schema/album/commentWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
+post:
+  tags:
+    - album
+  summary: create post
+  description: create post.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - assets
+            - categories
+          properties:
+            assets:
+              type: array
+              minLength: 1
+              items:
+                $ref: "/schema/album/asset.yaml"
+            categories:
+              type: array
+              minLength: 1
+              items:
+                $ref: "/schema/album/category.yaml"
+  responses:
+    201:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _id:
+                type: string
+                format: uuid
+                description: post id.
+              assets:
+                type: array
+                items:
+                  $ref: "/schema/album/assetWithId.yaml"
+              categories:
+                type: array
+                items:
+                  $ref: "/schema/album/categoryWithId.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method

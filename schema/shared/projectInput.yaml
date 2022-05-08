@@ -2,9 +2,9 @@ type: object
 properties:
   title:
     type: string
-    description: project title
+    description: project title.
     maxLength: 25
   description:
     type: string
-    description: project description
+    description: project description.
     maxLength: 100

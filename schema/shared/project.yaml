@@ -4,20 +4,20 @@ allOf:
       _id:
         type: string
         format: uuid
-        description: project id
+        description: project id.
       ownerId:
         type: string
         format: uuid
-        description: project owner's id
+        description: project owner id.
       createdAt:
         type: string
         format: date-time
-        description: project created date
+        description: project created date.
       updatedAt:
         type: string
         format: date-time
-        description: project updated date
+        description: project updated date.
       accessUsers:
         type: array
-        description: access users information
+        description: access users information.
   - $ref: "/schema/shared/projectInput.yaml"

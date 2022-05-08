@@ -1,0 +1,8 @@
+allOf:
+  - type: object
+    properties:
+      _id:
+        type: string
+        format: uuid
+        description: comment id.
+  - $ref: "/schema/album/comment.yaml"

@@ -1,0 +1,6 @@
+type: object
+properties:
+  key:
+    type: string
+    format: uuid
+    description: amazon s3 key full path.

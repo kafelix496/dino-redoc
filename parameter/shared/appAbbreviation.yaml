@@ -1,5 +1,5 @@
 name: appAbbreviation
-description: target app abbreviation
+description: target app abbreviation.
 in: path
 required: true
 schema:
