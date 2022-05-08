@@ -1,6 +1,5 @@
 name: appAbbreviation
 description: target app abbreviation.
 in: path
-required: true
 schema:
   $ref: "#/components/enums/appAbbreviation"

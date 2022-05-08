@@ -16,7 +16,6 @@ get:
     - name: projectId
       description: target project id.
       in: path
-      required: true
       schema:
         type: string
   responses:
@@ -50,7 +49,6 @@ put:
     - name: projectId
       description: target project id.
       in: path
-      required: true
       schema:
         type: string
   requestBody:
@@ -89,7 +87,6 @@ delete:
     - name: projectId
       description: target project id.
       in: path
-      required: true
       schema:
         type: string
         format: uuid

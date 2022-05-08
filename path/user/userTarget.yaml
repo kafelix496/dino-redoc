@@ -12,7 +12,6 @@ put:
     - name: userId
       description: target user id.
       in: path
-      required: true
       schema:
         type: string
   responses:
