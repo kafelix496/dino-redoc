@@ -23,10 +23,41 @@
   <body>
     <script>
       const redocTag = document.createElement('redoc')
+      redocTag.setAttribute('id', 'redoc')
       redocTag.setAttribute('spec-url', `./dino.yaml?now=${Date.now()}`)
       const bodyTag = document.querySelector('body')
       bodyTag.append(redocTag)
     </script>
     <script src="node_modules/redoc/bundles/redoc.standalone.js"></script>
+    <script>
+      Redoc.init(
+        null,
+        {
+          pathInMiddlePanel: false,
+          suppressWarnings: true,
+          activeScrollbars: true,
+          hideDownloadButton: true
+        },
+        document.getElementById('redoc'),
+        () => {
+          Array.from(document.querySelectorAll('li > label[role=menuitem]')).forEach(
+            (domNode) => {
+              const dataItemId = domNode.parentNode.getAttribute('data-item-id')
+
+              if (dataItemId && domNode.querySelector('span[type]')) {
+                domNode.style.padding = '0px'
+                domNode.style.display = 'block'
+                domNode.innerHTML = `
+                  <a href="/#${dataItemId}" target="_parent" style="color: inherit; text-decoration: none;">
+                    <div style="display: flex; align-items: center; width: 100%; height: 100%; padding: 12.5px 20px;">
+                      ${domNode.innerHTML}
+                    </div>
+                  </a>`
+              }
+            }
+          )
+        }
+      )
+    </script>
   </body>
 </html>
