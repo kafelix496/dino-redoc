@@ -1,35 +1,29 @@
-type: object
-properties:
-  _id:
-    type: string
-    format: uuid
-    description: user id.
-  name:
-    type: string
-    description: user name.
-  email:
-    type: string
-    format: email
-    description: user email.
-  emailVerified:
-    type: boolean
-    nullable: true
-    description: |
-      user email verification status.
+allOf:
+  - type: object
+    properties:
+      _id:
+        type: string
+        format: uuid
+        description: user id.
+      name:
+        type: string
+        description: user name.
+      email:
+        type: string
+        format: email
+        description: user email.
+      emailVerified:
+        type: boolean
+        nullable: true
+        description: |
+          user email verification status.
 
-      currently it always return null.
-    default: null
-  image:
-    type: string
-    format: uri
-    description: user thumbnail url.
-  accessLevel:
-    $ref: "/schema/shared/accessLevel.yaml"
-  createdAt:
-    type: string
-    format: date-time
-    description: user created date.
-  updatedAt:
-    type: string
-    format: date-time
-    description: user updated date.
+          currently it always return null.
+        default: null
+      image:
+        type: string
+        format: uri
+        description: user thumbnail url.
+      accessLevel:
+        $ref: "/schema/shared/accessLevel.yaml"
+  - $ref: "/schema/shared/time.yaml"

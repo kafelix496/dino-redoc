@@ -9,15 +9,8 @@ allOf:
         type: string
         format: uuid
         description: project owner id.
-      createdAt:
-        type: string
-        format: date-time
-        description: project created date.
-      updatedAt:
-        type: string
-        format: date-time
-        description: project updated date.
       accessUsers:
         type: array
         description: access users information.
   - $ref: "/schema/shared/projectInput.yaml"
+  - $ref: "/schema/shared/time.yaml"

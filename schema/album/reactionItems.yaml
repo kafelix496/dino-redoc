@@ -1,0 +1,65 @@
+items:
+  type: array
+  prefixItems:
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [LIKE]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total like reaction count.
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [LOVE]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total love reaction count.
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [HAHA]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total haha reaction count.
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [WOW]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total wow reaction count.
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [SAD]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total sad reaction count.
+    - type: object
+      properties:
+        type:
+          type: string
+          enum: [ANGRY]
+          description: reaction type.
+        total:
+          type: number
+          minumum: 0
+          description: total angry reaction count.
+  minItems: 6
+  maxItems: 6

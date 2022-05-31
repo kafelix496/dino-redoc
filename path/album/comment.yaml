@@ -7,30 +7,26 @@ get:
     - application/json
   produces:
     - application/json
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - parent
-            - parentId
-            - page
-          properties:
-            parent:
-              type: string
-              description: target parent who have comments.
-              enum:
-                - "POST"
-                - "ASSET"
-            parentId:
-              type: string
-              format: uuid
-              description: target parent id.
-            page:
-              type: number
-              minimum: 1
-              description: page number. size of the page is 25.
+  parameters:
+    - name: parent
+      description: target parent that has comments.
+      required: true
+      in: query
+      schema:
+        type: string
+    - name: parentId
+      description: target parent id.
+      required: true
+      in: query
+      schema:
+        type: string
+        format: uuid
+    - name: page
+      description: page number. size of the page is 25.
+      required: true
+      in: query
+      schema:
+        type: number
   responses:
     200:
       description: successful operation
@@ -42,12 +38,14 @@ get:
               total:
                 type: number
                 minimum: 0
-                description: total "comment" count.
+                description: total comment count.
               comments:
                 type: array
                 maxItems: 25
                 items:
-                  $ref: "/schema/album/commentWithId.yaml"
+                  allOf:
+                    - $ref: "/schema/album/commentWithIdAndReaction.yaml"
+                    - $ref: "/schema/shared/time.yaml"
     400:
       description: unexpected error
     401:
@@ -76,7 +74,7 @@ post:
               properties:
                 parent:
                   type: string
-                  description: target parent who have comments.
+                  description: target parent that has comments.
                   enum:
                     - "POST"
                     - "ASSET"
@@ -84,14 +82,19 @@ post:
                   type: string
                   format: uuid
                   description: target parent id.
-            - $ref: "/schema/album/comment.yaml"
+            - type: object
+              properties:
+                content:
+                  $ref: "/schema/album/commentContent.yaml"
   responses:
     201:
       description: successful operation
       content:
         application/json:
           schema:
-            $ref: "/schema/album/commentWithId.yaml"
+            allOf:
+              - $ref: "/schema/album/commentWithIdAndReaction.yaml"
+              - $ref: "/schema/shared/time.yaml"
     400:
       description: unexpected error
     401:

@@ -7,18 +7,20 @@ get:
     - application/json
   produces:
     - application/json
-  requestBody:
-    content:
-      application/json:
-        schema:
-          type: object
-          required:
-            - page
-          properties:
-            page:
-              type: number
-              minimum: 1
-              description: page number. size of the page is 25.
+  parameters:
+    - name: page
+      description: page number. size of the page is 25.
+      required: true
+      in: query
+      schema:
+        type: number
+    - name: audience
+      description: audience to filter.
+      required: true
+      in: query
+      schema:
+        type: string
+        enum: [VIEWER, ALL]
   responses:
     200:
       description: successful operation
@@ -30,7 +32,7 @@ get:
               total:
                 type: number
                 minimum: 0
-                description: total "post" count.
+                description: total post count.
               posts:
                 type: array
                 maxItems: 25
@@ -41,12 +43,15 @@ get:
                       type: string
                       format: uuid
                       description: post id.
+                    audience:
+                      type: string
+                      enum: [VIEWER, ALL]
                     categories:
                       type: array
                       items:
                         $ref: "/schema/album/categoryWithId.yaml"
-                    like:
-                      $ref: "/schema/album/like.yaml"
+                    reaction:
+                      $ref: "/schema/album/reaction.yaml"
                     assets:
                       type: array
                       items:
@@ -55,7 +60,13 @@ get:
                       type: array
                       maxItems: 25
                       items:
-                        $ref: "/schema/album/commentWithId.yaml"
+                        $ref: "/schema/album/commentWithIdAndReaction.yaml"
+                    createdAt:
+                      type: string
+                      format: date-time
+                    updatedAt:
+                      type: string
+                      format: date-time
     400:
       description: unexpected error
     401:
@@ -77,19 +88,21 @@ post:
         schema:
           type: object
           required:
-            - assets
-            - categories
+            - assetsKey
           properties:
-            assets:
+            assetsKey:
               type: array
               minLength: 1
               items:
-                $ref: "/schema/album/asset.yaml"
-            categories:
+                $ref: "/schema/album/assetKey.yaml"
+            categoriesId:
               type: array
-              minLength: 1
               items:
-                $ref: "/schema/album/category.yaml"
+                type: string
+                format: uuid
+            audience:
+              type: string
+              enum: [VIEWER, ALL]
   responses:
     201:
       description: successful operation
@@ -102,14 +115,30 @@ post:
                 type: string
                 format: uuid
                 description: post id.
-              assets:
-                type: array
-                items:
-                  $ref: "/schema/album/assetWithId.yaml"
+              audience:
+                type: string
+                enum: [VIEWER, ALL]
               categories:
                 type: array
                 items:
                   $ref: "/schema/album/categoryWithId.yaml"
+              reaction:
+                $ref: "/schema/album/reaction.yaml"
+              assets:
+                type: array
+                items:
+                  $ref: "/schema/album/assetWithId.yaml"
+              comments:
+                type: array
+                maxItems: 25
+                items:
+                  $ref: "/schema/album/commentWithIdAndReaction.yaml"
+              createdAt:
+                type: string
+                format: date-time
+              updatedAt:
+                type: string
+                format: date-time
     400:
       description: unexpected error
     401:

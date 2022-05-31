@@ -1,15 +1,15 @@
 put:
   tags:
     - album
-  summary: update category
-  description: update category information.
+  summary: update comment
+  description: update comment information.
   consumes:
     - application/json
   produces:
     - application/json
   parameters:
-    - name: categoryId
-      description: target category id.
+    - name: commentId
+      description: target comment id.
       in: path
       schema:
         type: string
@@ -18,16 +18,17 @@ put:
     content:
       application/json:
         schema:
-          required:
-            - name
-          $ref: "/schema/album/category.yaml"
+          type: object
+          properties:
+            content:
+              $ref: "/schema/album/commentContent.yaml"
   responses:
     200:
       description: successful operation
       content:
         application/json:
           schema:
-            $ref: "/schema/album/categoryWithId.yaml"
+            $ref: "/schema/album/commentWithIdAndReaction.yaml"
     400:
       description: unexpected error
     401:
@@ -37,15 +38,15 @@ put:
 delete:
   tags:
     - album
-  summary: delete category
-  description: delete category.
+  summary: delete comment
+  description: delete comment.
   consumes:
     - application/json
   produces:
     - application/json
   parameters:
-    - name: categoryId
-      description: target category id.
+    - name: commentId
+      description: target comment id.
       in: path
       schema:
         type: string

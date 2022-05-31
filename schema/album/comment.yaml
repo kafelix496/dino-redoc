@@ -1,6 +1,10 @@
 type: object
 properties:
   content:
+    $ref: "/schema/album/commentContent.yaml"
+  createdAt:
     type: string
-    maxLength: 500
-    description: comment content.
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
