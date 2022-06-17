@@ -3,4 +3,4 @@ properties:
   name:
     type: string
     description: category name.
-    maxLength: 25
+    maxLength: 10
