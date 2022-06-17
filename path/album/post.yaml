@@ -89,20 +89,21 @@ post:
           type: object
           required:
             - assetsKey
+            - audience
           properties:
             assetsKey:
               type: array
               minLength: 1
               items:
                 $ref: "/schema/album/assetKey.yaml"
+            audience:
+              type: string
+              enum: [VIEWER, ALL]
             categoriesId:
               type: array
               items:
                 type: string
                 format: uuid
-            audience:
-              type: string
-              enum: [VIEWER, ALL]
   responses:
     201:
       description: successful operation
