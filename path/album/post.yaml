@@ -68,6 +68,10 @@ get:
                       maxItems: 25
                       items:
                         $ref: "/schema/album/commentWithIdAndReaction.yaml"
+                    description:
+                      type: string
+                      maxLength: 100
+                      description: post description.
                     createdAt:
                       type: string
                       format: date-time
@@ -111,6 +115,10 @@ post:
               items:
                 type: string
                 format: uuid
+            description:
+              type: string
+              maxLength: 100
+              description: post description.
   responses:
     201:
       description: successful operation
