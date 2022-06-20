@@ -101,6 +101,7 @@ post:
           required:
             - assetsKey
             - audience
+            - title
           properties:
             assetsKey:
               type: array
@@ -115,6 +116,10 @@ post:
               items:
                 type: string
                 format: uuid
+            title:
+              type: string
+              maxLength: 10
+              description: post title.
             description:
               type: string
               maxLength: 100
