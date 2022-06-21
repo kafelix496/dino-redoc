@@ -103,11 +103,17 @@ post:
             - audience
             - title
           properties:
-            assetsKey:
+            assets:
               type: array
               minLength: 1
               items:
-                $ref: "/schema/album/assetKey.yaml"
+                type: object
+                properties:
+                  key:
+                    $ref: "/schema/album/assetKey.yaml"
+                  extension:
+                    type: string
+                    description: file extension.
             audience:
               type: string
               enum: [VIEWER, ALL]
