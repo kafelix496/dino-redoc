@@ -59,9 +59,9 @@ paths:
     $ref: "/path/project/project.yaml"
   /app/{appAbbreviation}/project/{projectId}:
     $ref: "/path/project/projectTarget.yaml"
-  /s3/pre_signed_download:
+  /s3/pre-signed-download:
     $ref: "/path/s3/preSignedDownload.yaml"
-  /s3/pre_signed_upload:
+  /s3/pre-signed-upload:
     $ref: "/path/s3/preSignedUpload.yaml"
   /app/fa/album/post:
     $ref: "/path/album/post.yaml"
