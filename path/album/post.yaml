@@ -124,7 +124,7 @@ post:
                 format: uuid
             title:
               type: string
-              maxLength: 10
+              maxLength: 20
               description: post title.
             description:
               type: string
