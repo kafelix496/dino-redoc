@@ -1,10 +1,6 @@
-type: object
-properties:
-  content:
-    $ref: "/schema/album/commentContent.yaml"
-  createdAt:
-    type: string
-    format: date-time
-  updatedAt:
-    type: string
-    format: date-time
+allOf:
+  - type: object
+    properties:
+      content:
+        $ref: "/schema/album/commentContent.yaml"
+  - $ref: "/schema/shared/time.yaml"

@@ -17,6 +17,10 @@ delete:
   responses:
     204:
       description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/album/reactionResponse.yaml"
     400:
       description: unexpected error
     401:

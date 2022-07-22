@@ -44,8 +44,11 @@ get:
                 maxItems: 25
                 items:
                   allOf:
-                    - $ref: "/schema/album/commentWithIdAndReaction.yaml"
-                    - $ref: "/schema/shared/time.yaml"
+                    - $ref: "/schema/album/commentResponse.yaml"
+                    - type: object
+                      properties:
+                        reaction:
+                          $ref: "/schema/album/reaction.yaml"
     400:
       description: unexpected error
     401:
@@ -76,8 +79,8 @@ post:
                   type: string
                   description: target parent that has comments.
                   enum:
-                    - "POST"
-                    - "ASSET"
+                    - "album.posts"
+                    - "album.assets"
                 parentId:
                   type: string
                   format: uuid
@@ -92,9 +95,7 @@ post:
       content:
         application/json:
           schema:
-            allOf:
-              - $ref: "/schema/album/commentWithIdAndReaction.yaml"
-              - $ref: "/schema/shared/time.yaml"
+            $ref: "/schema/album/commentResponse.yaml"
     400:
       description: unexpected error
     401:

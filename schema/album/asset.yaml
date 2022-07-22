@@ -1,13 +1,9 @@
-type: object
-properties:
-  key:
-    $ref: "/schema/album/assetKey.yaml"
-  extension:
-    type: string
-    description: file extension.
-  createdAt:
-    type: string
-    format: date-time
-  updatedAt:
-    type: string
-    format: date-time
+allOf:
+  - type: object
+    properties:
+      key:
+        $ref: "/schema/album/assetKey.yaml"
+      extension:
+        type: string
+        description: file extension.
+  - $ref: "/schema/shared/time.yaml"

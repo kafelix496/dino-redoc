@@ -4,16 +4,10 @@ properties:
     type: string
     nullable: true
     format: uuid
-    description: |
-      reaction id.
-
-      if there's no reaction, it's null.
+    description: reaction id.
   status:
     type: string
     nullable: true
-    description: |
-      reaction status of the self.
-
-      if there's no reaction, it's null.
+    description: reaction status of the self.
     $ref: "#/components/enums/reaction"
   $ref: "/schema/album/reactionItems.yaml"

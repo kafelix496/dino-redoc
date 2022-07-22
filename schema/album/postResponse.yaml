@@ -1,0 +1,30 @@
+allOf:
+  - type: object
+    properties:
+      _id:
+        type: string
+        format: uuid
+        description: post id.
+      categories:
+        type: array
+        items:
+          type: string
+          format: uuid
+          description: linked categories id.
+      assets:
+        type: array
+        items:
+          type: string
+          format: uuid
+          description: linked assets id.
+      audience:
+        type: string
+        description: target audience.
+        $ref: "#/components/enums/postAudience"
+      title:
+        type: string
+        description: post title.
+      description:
+        type: string
+        description: post description.
+  - $ref: "/schema/shared/time.yaml"

@@ -4,6 +4,13 @@ info:
   description: |
     # enums description
 
+    ## album collection
+    - "album.posts": post colleciton name
+    - "album.assets": asset collection name
+    - "album.categories": category collection name
+    - "album.reactions": reaction collection name
+    - "album.comments": comment collection name
+
     ## app abbreviation
     - "fa": family album
     - "mt": money tracker
@@ -23,6 +30,10 @@ info:
     - "WOW": WOW,
     - "SAD": SAD,
     - "ANGRY": ANGRY
+
+    ## postAudience
+    - "ALL": ALL,
+    - "VIEWER": VIEWER,
 servers:
   - url: http://localhost:3000/api
 tags:
@@ -65,6 +76,8 @@ paths:
     $ref: "/path/s3/preSignedUpload.yaml"
   /app/fa/album/post:
     $ref: "/path/album/post.yaml"
+  /app/fa/album/post/${postId}:
+    $ref: "/path/album/postTarget.yaml"
   /app/fa/album/asset/{assetId}:
     $ref: "/path/album/assetTarget.yaml"
   /app/fa/album/comment:
@@ -104,3 +117,8 @@ components:
         - WOW
         - SAD
         - ANGRY
+    postAudience:
+      type: string
+      enum:
+        - ALL
+        - VIEWER

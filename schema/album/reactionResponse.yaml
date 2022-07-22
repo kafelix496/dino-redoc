@@ -25,7 +25,3 @@ allOf:
         format: uuid
         description: user id.
   - $ref: "/schema/shared/time.yaml"
-type: object
-properties:
-  _id:
-    type: string
