@@ -1,0 +1,29 @@
+delete:
+  tags:
+    - album
+  summary: delete post
+  description: delete post.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - name: postId
+      description: target post id.
+      in: path
+      schema:
+        type: string
+        format: uuid
+  responses:
+    204:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/album/postResponse.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
