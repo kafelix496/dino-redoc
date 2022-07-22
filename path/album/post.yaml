@@ -112,7 +112,7 @@ post:
                     description: file extension.
             audience:
               type: string
-              enum: [VIEWER, ALL]
+              enum: [ALL, VIEWER]
             categoriesId:
               type: array
               items:
@@ -132,7 +132,14 @@ post:
       content:
         application/json:
           schema:
-            $ref: "/schema/album/postResponse.yaml"
+            type: object
+            properties:
+              post:
+                $ref: "/schema/album/postResponse.yaml"
+              assets:
+                type: array
+                items:
+                  $ref: "/schema/album/assetWithId.yaml"
     400:
       description: unexpected error
     401:
