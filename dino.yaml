@@ -74,6 +74,8 @@ paths:
     $ref: "/path/s3/preSignedDownload.yaml"
   /s3/pre-signed-upload:
     $ref: "/path/s3/preSignedUpload.yaml"
+  /s3/delete-s3-objects:
+    $ref: "/path/s3/deleteS3Objects.yaml"
   /app/fa/album/post:
     $ref: "/path/album/post.yaml"
   /app/fa/album/post/${postId}:

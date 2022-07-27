@@ -1,0 +1,29 @@
+post:
+  tags:
+    - s3
+  summary: delete s3 objects
+  description: delete s3 objects.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              keys:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                  description: asset keys.
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
