@@ -30,6 +30,12 @@ get:
                     maxItems: 25
                     items:
                       $ref: "/schema/album/commentWithIdAndReaction.yaml"
+                  siblings:
+                    type: array
+                    items:
+                      type: string
+                      format: uuid
+                      description: assets id in the same post.
               - $ref: "/schema/shared/time.yaml"
     400:
       description: unexpected error
