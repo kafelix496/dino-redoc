@@ -1,3 +1,57 @@
+put:
+  tags:
+    - album
+  summary: update post
+  description: update post.
+  consumes:
+    - application/json
+  produces:
+    - application/json
+  parameters:
+    - name: postId
+      description: target post id.
+      in: path
+      schema:
+        type: string
+        format: uuid
+  requestBody:
+    content:
+      application/json:
+        schema:
+          required:
+            - title
+            - audience
+          type: object
+          properties:
+            title:
+              type: string
+              description: post title.
+              maxLength: 25
+            description:
+              type: string
+              description: post description.
+              maxLength: 100
+            audience:
+              type: string
+              description: target audience.
+              $ref: "#/components/enums/postAudience"
+            categories:
+              type: array
+              items:
+                $ref: "/schema/album/categoryWithId.yaml"
+  responses:
+    200:
+      description: successful operation
+      content:
+        application/json:
+          schema:
+            $ref: "/schema/album/postResponse.yaml"
+    400:
+      description: unexpected error
+    401:
+      description: unauthorized
+    405:
+      description: invalid method
 delete:
   tags:
     - album

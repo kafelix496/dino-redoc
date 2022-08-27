@@ -1,9 +1,18 @@
 allOf:
   - type: object
     properties:
+      _id:
+        type: string
+        format: uuid
+        description: asset id.
       key:
         $ref: "/schema/album/assetKey.yaml"
+      type:
+        type: string
+        description: file type.
+        $ref: "#/components/enums/fileTypes"
       extension:
         type: string
         description: file extension.
+        $ref: "#/components/enums/fileExtensions"
   - $ref: "/schema/shared/time.yaml"

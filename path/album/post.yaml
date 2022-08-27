@@ -9,21 +9,19 @@ get:
     - application/json
   parameters:
     - name: page
-      description: page number. size of the page is 25.
+      description: page number. size of the page is 10.
       required: true
       in: query
       schema:
         type: number
-    - name: audience
-      description: audience to filter.
-      required: true
+    - name: category
+      description: category to filter.
       in: query
       schema:
         type: string
-        enum: [VIEWER, ALL]
-    - name: category
-      description: category to filter.
-      required: true
+        format: uuid
+    - name: asset
+      description: asset to see detail on modal.
       in: query
       schema:
         type: string
@@ -42,38 +40,9 @@ get:
                 description: total post count.
               posts:
                 type: array
-                maxItems: 25
+                maxItems: 10
                 items:
-                  allOf:
-                    - type: object
-                      properties:
-                        _id:
-                          type: string
-                          format: uuid
-                          description: post id.
-                        audience:
-                          type: string
-                          enum: [VIEWER, ALL]
-                        categories:
-                          type: array
-                          items:
-                            $ref: "/schema/album/categoryWithId.yaml"
-                        reaction:
-                          $ref: "/schema/album/reaction.yaml"
-                        assets:
-                          type: array
-                          items:
-                            $ref: "/schema/album/assetWithId.yaml"
-                        comments:
-                          type: array
-                          maxItems: 25
-                          items:
-                            $ref: "/schema/album/commentWithIdAndReaction.yaml"
-                        description:
-                          type: string
-                          maxLength: 100
-                          description: post description.
-                    - $ref: "/schema/shared/time.yaml"
+                  $ref: "/schema/album/postResponse.yaml"
     400:
       description: unexpected error
     401:
@@ -99,6 +68,22 @@ post:
             - audience
             - title
           properties:
+            title:
+              type: string
+              maxLength: 25
+              description: post title.
+            description:
+              type: string
+              maxLength: 100
+              description: post description.
+            audience:
+              type: string
+              $ref: "#/components/enums/postAudience"
+            categories:
+              type: array
+              items:
+                type: string
+                format: uuid
             assets:
               type: array
               minLength: 1
@@ -110,36 +95,13 @@ post:
                   extension:
                     type: string
                     description: file extension.
-            audience:
-              type: string
-              enum: [ALL, VIEWER]
-            categoriesId:
-              type: array
-              items:
-                type: string
-                format: uuid
-            title:
-              type: string
-              maxLength: 20
-              description: post title.
-            description:
-              type: string
-              maxLength: 100
-              description: post description.
   responses:
     201:
       description: successful operation
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              post:
-                $ref: "/schema/album/postResponse.yaml"
-              assets:
-                type: array
-                items:
-                  $ref: "/schema/album/assetWithId.yaml"
+            $ref: "/schema/album/postResponse.yaml"
     400:
       description: unexpected error
     401:

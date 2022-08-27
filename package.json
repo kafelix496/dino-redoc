@@ -9,6 +9,6 @@
     "yarn": "1.22.18"
   },
   "dependencies": {
-    "redoc": "2.0.0-rc.72"
+    "redoc": "2.0.0-rc.76"
   }
 }

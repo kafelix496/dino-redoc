@@ -8,8 +8,6 @@ info:
     - "album.posts": post colleciton name
     - "album.assets": asset collection name
     - "album.categories": category collection name
-    - "album.reactions": reaction collection name
-    - "album.comments": comment collection name
 
     ## app abbreviation
     - "fa": family album
@@ -23,17 +21,19 @@ info:
     - "9": admin
     - "10": super admin
 
-    ## reaction
-    - "LIKE": LIKE,
-    - "LOVE": LOVE,
-    - "HAHA": HAHA,
-    - "WOW": WOW,
-    - "SAD": SAD,
-    - "ANGRY": ANGRY
-
     ## postAudience
     - "ALL": ALL,
     - "VIEWER": VIEWER,
+
+    ## fileTypes
+    - "image": IMAGE,
+    - "video": VIDEO,
+
+    ## fileExtensions
+    - "png": PNG,
+    - "jpeg": JPEG,
+    - "heic": HEIC,
+    - "mp4": MP4,
 servers:
   - url: http://localhost:3000/api
 tags:
@@ -82,14 +82,6 @@ paths:
     $ref: "/path/album/postTarget.yaml"
   /app/fa/album/asset/{assetId}:
     $ref: "/path/album/assetTarget.yaml"
-  /app/fa/album/comment:
-    $ref: "/path/album/comment.yaml"
-  /app/fa/album/comment/{commentId}:
-    $ref: "/path/album/commentTarget.yaml"
-  /app/fa/album/reaction:
-    $ref: "/path/album/reaction.yaml"
-  /app/fa/album/reaction/{reactionId}:
-    $ref: "/path/album/reactionTarget.yaml"
   /app/fa/album/category:
     $ref: "/path/album/category.yaml"
   /app/fa/album/category/{categoryId}:
@@ -110,17 +102,20 @@ components:
         - "5"
         - "9"
         - "10"
-    reaction:
-      type: string
-      enum:
-        - LIKE
-        - LOVE
-        - HAHA
-        - WOW
-        - SAD
-        - ANGRY
     postAudience:
       type: string
       enum:
         - ALL
         - VIEWER
+    fileTypes:
+      type: string
+      enum:
+        - image
+        - video
+    fileExtensions:
+      type: string
+      enum:
+        - png
+        - jpeg
+        - heic
+        - mp4

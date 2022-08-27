@@ -5,26 +5,24 @@ allOf:
         type: string
         format: uuid
         description: post id.
-      categories:
-        type: array
-        items:
-          type: string
-          format: uuid
-          description: linked categories id.
-      assets:
-        type: array
-        items:
-          type: string
-          format: uuid
-          description: linked assets id.
+      title:
+        type: string
+        description: post title.
+        maxLength: 25
+      description:
+        type: string
+        description: post description.
+        maxLength: 100
       audience:
         type: string
         description: target audience.
         $ref: "#/components/enums/postAudience"
-      title:
-        type: string
-        description: post title.
-      description:
-        type: string
-        description: post description.
+      categories:
+        type: array
+        items:
+          $ref: "/schema/album/categoryWithId.yaml"
+      assets:
+        type: array
+        items:
+          $ref: "/schema/album/asset.yaml"
   - $ref: "/schema/shared/time.yaml"

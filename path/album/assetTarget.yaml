@@ -20,16 +20,9 @@ get:
         application/json:
           schema:
             allOf:
-              - $ref: "/schema/album/assetWithId.yaml"
+              - $ref: "/schema/album/asset.yaml"
               - type: object
                 properties:
-                  reaction:
-                    $ref: "/schema/album/reaction.yaml"
-                  comments:
-                    type: array
-                    maxItems: 25
-                    items:
-                      $ref: "/schema/album/commentWithIdAndReaction.yaml"
                   siblings:
                     type: array
                     items:

@@ -1,6 +1,0 @@
-allOf:
-  - $ref: "/schema/album/assetWithId.yaml"
-  - type: object
-    properties:
-      reaction:
-        $ref: "/schema/album/reaction.yaml"

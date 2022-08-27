@@ -1,6 +1,0 @@
-allOf:
-  - type: object
-    properties:
-      content:
-        $ref: "/schema/album/commentContent.yaml"
-  - $ref: "/schema/shared/time.yaml"
