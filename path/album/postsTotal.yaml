@@ -1,27 +1,15 @@
 get:
   tags:
     - album
-  summary: get post list
-  description: get post list.
+  summary: get posts total count
+  description: get posts total count.
   consumes:
     - application/json
   produces:
     - application/json
   parameters:
-    - name: qpPage
-      description: page number. size of the page is 10.
-      required: true
-      in: query
-      schema:
-        type: number
     - name: qpCategoryId
       description: category id to filter.
-      in: query
-      schema:
-        type: string
-        format: uuid
-    - name: qpAssetId
-      description: asset id to see detail on modal.
       in: query
       schema:
         type: string
@@ -32,7 +20,9 @@ get:
       content:
         application/json:
           schema:
-            $ref: "/schema/album/postResponse.yaml"
+            type: number
+            minimum: 0
+            description: total post count.
     400:
       description: unexpected error
     401:

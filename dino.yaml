@@ -78,6 +78,8 @@ paths:
     $ref: "/path/s3/deleteS3Objects.yaml"
   /app/fa/album/post:
     $ref: "/path/album/post.yaml"
+  /app/fa/album/post/total:
+    $ref: "/path/album/postsTotal.yaml"
   /app/fa/album/post/${postId}:
     $ref: "/path/album/postTarget.yaml"
   /app/fa/album/asset/{assetId}:
